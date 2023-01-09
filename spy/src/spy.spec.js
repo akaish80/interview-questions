@@ -1,32 +1,32 @@
 import { adder } from "./spy";
 
 // spyOn here
-function spyOn(fn){
-  let i =0
-  const arr = []
-  const paramArr = []
+function spyOn(fn) {
+  let i = 0;
+  const arr = [];
+  const paramArr = [];
 
   const a = (...params) => {
-  i = i +  1
-  const count = arguments[0](...params)
-  arr.push(count)
-  paramArr.push(...params)
-  return count
- }
+    i = i + 1;
+    const count = arguments[0](...params);
+    arr.push(count);
+    paramArr.push(...params);
+    return count;
+  };
 
- a.callCount = () => {
-   return i
- }
+  a.callCount = () => {
+    return i;
+  };
 
- a.returned = (val) => {
-   return arr.includes(val)
- }
+  a.returned = (val) => {
+    return arr.includes(val);
+  };
 
- a.wasCalledWith = (val) => {
-   return paramArr.includes(val)
- }
- 
-   return a
+  a.wasCalledWith = (val) => {
+    return paramArr.includes(val);
+  };
+
+  return a;
 }
 const adderSpy = spyOn(adder);
 
